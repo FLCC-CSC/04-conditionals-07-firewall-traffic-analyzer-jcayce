@@ -1,8 +1,8 @@
 # FILE NAME - firewall_traffic_analyzer.py
 
-# NAME: 
-# DATE: 
-# BRIEF DESCRIPTION:  
+# NAME: John Cayce  
+# DATE: 3-1-26
+# BRIEF DESCRIPTION: Firewall traffic analyzer  
 
 
 
@@ -15,7 +15,25 @@
 
 ########## ENTER YER CODE BELOW THIS LINE ##########
 
+print("=== Network Traffic Security Analyzer ===\n")
 
+port_number = int(input("Enter the port number (e.g., 80, 22, 443, 3389): "))
+transfer_size = int(input("Enter the data transfer size in megabytes (MB): "))
+
+if (port_number == 22 or port_number == 3389) and transfer_size >= 100:
+    risk_level = "HIGH RISK: Potential unauthorized remote access detected!"
+elif port_number == 80 and transfer_size > 100:
+    risk_level = "MEDIUM RISK: Large unencrypted data transfer detected."
+elif port_number == 443:
+    risk_level = "LOW RISK: Secure encrypted transfer detected."
+else:
+    risk_level = "UNKNOWN: Unrecognized traffic pattern."
+
+print()
+print("FIREWALL LOG:")
+print(f"Port: {port_number}, Transfer Size: {transfer_size} MB")
+print(f"Risk Assessment: {risk_level}")
+print("------------------------")
 
 
 
@@ -90,7 +108,7 @@ Risk Assessment: UNKNOWN: Unrecognized traffic pattern.
 
 1. Did you get tripped up using the `or` or `and` operators? If so, how?
 
-
+I definitely got tripped up at first because I thought I could just write if port == 80 or 443:, but I realized Python is super picky and I actually had to write out the whole thing like if port == 80 or port == 443: to make the logic work
 
 
 
